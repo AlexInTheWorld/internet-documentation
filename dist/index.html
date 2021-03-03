@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Documentation page: Internet fundamentals</title>
+  <meta charset="utf-8" lang="en" name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internet guide</title>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+  <nav id="navbar">
+    <header>Internet, the fundamentals</header>
+    <ul>
+      <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+      <li>
+        <a class="nav-link" href="#How_internet_works">How internet works</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Internet_and_the_web">Internet and the web</a>
+      </li>
+      <div class="dropdown">
+        <li><a class="nav-link" href="#How_the_web_works">How the web works</a></li>
+        <ul class="dropdown-content">
+          <li><a class="nav-link" href="#Big_picture">The big picture</a></li>
+          <li>
+            <a class="nav-link" href="#What_is_involved">What is involved?</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#Whole_process">The whole process</a>
+          </li>
+          <li><a class="nav-link" href="#Dns_explained">DNS explained</a></li>
+          <li><a class="nav-link" href="#Packets_explained">Packets explained</a></li>
+        </ul>
+      </div>
+      <div id="ref">
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+      </div>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <article>
+        <p>
+          The Internet is the backbone of the Web, the technical infrastructure that brings the Web into existence. In essence, the Internet is a large network of computers which communicate all together.
+        </p>
+
+        <p>
+          The history of the internet began in the 1960s as a US-army-funded research project, which evolved into a public infrastructure in the 1980s with the support of many public universities and private companies. The various technologies that support the
+          Internet have evolved over time, but the way it works hasn't changed that much: Internet is a way to connect computers all together and ensure that, whatever happens, they find a way to stay connected.
+        </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="How_internet_works">
+      <header>How internet works</header>
+      <article>
+        <p>When two computers need to communicate they link either physically (usually with an Ethernet cable) or wirelessly (for example with WiFi or Bluetooth systems). All modern computers can sustain any of those connections</p>
+        <figure>
+          <img src="https://mdn.mozillademos.org/files/8441/internet-schema-1.png" alt="a depiction of two computers connected via cable">
+          <figcaption>A simple example showing two computers connected via cable</figcaption>
+        </figure>
+        <p>Such a network is not limited to two computers. As many computers can be connected as desired. But it gets complicated quickly. If you're trying to connect, say, ten computers, you need 45 cables, with nine plugs per computer!</p>
+
+        <figure>
+          <img src="https://mdn.mozillademos.org/files/8443/internet-schema-2.png" alt="a tangled network of computers connected physically via cable">
+          <figcaption>What a gigantic mess, right?</figcaption>
+        </figure>
+        <p>To solve this problem, each computer on a network is connected to a special tiny computer called a <em>router</em>. This router has only one job: like a signaler at a railway station, it makes sure that a message sent from a given computer arrives
+          at the right destination computer. To send a message to computer B, computer A must send the message to the router, which in turn forwards the message to computer B and makes sure the message is not delivered to computer C.</p>
+        <figure>
+          <img src="https://mdn.mozillademos.org/files/8443/internet-schema-2.png" alt="a network of 10 computers are interconnected using a router in between">
+          <figcaption>Sticking to the example above, once we add a router to the system, our network of 10 computers only requires 10 cables</figcaption>
+        </figure>
+        <p>So far so good. But what about connecting hundreds, thousands, billions of computers? Of course a single router can't scale that far, but by connecting computers to routers, then routers to routers, we are able to scale infinitely. </p>
+        <figure>
+          <img src="https://mdn.mozillademos.org/files/8449/internet-schema-5.png" alt="an intricate network of computers by making use of router to router interconnection">
+          <figcaption>Network of networks</figcaption>
+        </figure>
+        <p>Such a network is very close to what is called the <em>Internet</em>, but something's missing here. We built that network for our own purposes. There are other networks out there: your friends, your neighbors, anyone can have their own network
+          of computers. But it's not really possible to set cables up between your house and the rest of the world. Well, there are already cables linked to your house, for example, electric power and telephone. The telephone infrastructure already connects
+          your house with anyone in the world so it is the perfect wire we need. To connect our network to the telephone infrastructure, we need a special piece of equipment called a <em>modem</em>. This modem turns the information from our network into
+          information manageable by the telephone infrastructure and vice versa.</p>
+        <p>So we are connected to the telephone infrastructure. The next step is to send the messages from our network to the network we want to reach. To do that, we will connect our network to an <em>Internet Service Provider</em> (ISP). An ISP is a company
+          that manages some special routers that are all linked together and can also access other ISPs' routers. So the message from our network is carried through the network of ISP networks to the destination network. The Internet consists of this
+          whole infrastructure of networks.</p>
+        <figure>
+          <img src="https://mdn.mozillademos.org/files/8453/internet-schema-7.png" alt="the internet network">
+        </figure>
+        <p>If you want to send a message to a computer, you have to specify which one. Thus any computer linked to a network has a unique address that identifies it, called an "IP address" (where IP stands for <em>Internet Protocol</em>). It's an address
+          made of a series of four numbers separated by dots, for example: <code>192.168.2.10</code>.</p>
+        <p>That's perfectly fine for computers, but we human beings have a hard time remembering that sort of address. To make things easier, we can alias an IP address with a human readable name called a <em>domain name</em>. For example, <code>google.com</code>          is the domain name used on top of the IP address <code>173.194.121.32</code>. So using the domain name is the easiest way for us to reach a computer over the Internet.</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Internet_and_the_web">
+      <header>Internet and the web</header>
+      <article>
+        <p>As you might notice, when we browse the Web with a Web browser, we usually use the domain name to reach a website. Does that mean the Internet and the Web are the same thing? It's not that simple. As we saw, the Internet is a technical infrastructure
+          which allows billions of computers to be connected all together. Among those computers, some computers (called Web servers) can send messages intelligible to <em>web browsers</em>. The Internet is an infrastructure, whereas the Web is a service
+          built on top of the infrastructure. It is worth noting there are several other services built on top of the Internet, such as email and <a href="https://developer.mozilla.org/en-US/docs/Glossary/IRC" target="_blank">IRC</a>.</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="How_the_web_works">
+      <header>How the web works</header>
+      <h1 id="Big_picture">The big picture</h1>
+      <article>
+        <p>Computers connected to the web are called <strong>clients</strong> and <strong>servers</strong>.</p>
+
+        <div id="diagram" style="height:160; width:430;">
+          <svg width="100%" height="100%" viewBox="-2 -2 430 160" preserveAspectRatio="xMidYMid meet">
+  <circle cx="75" cy="75" r="75" stroke="black" stroke-width="3" fill="azure" />  
+<text x="50" y="78" fill="black">CLIENT</text>
+  <circle cx="350" cy="75" r="75" stroke="black" stroke-width="3" fill="azure" />
+<text x="325" y="78" fill="black">SERVER</text>
+    <g transform="translate(20,0)">
+<line x1="180" y1="60" x2="245" y2="60" style="stroke:rgb(0,0,0);stroke-width:3" />
+        <path d="M 237 47
+           A 18.3847763 18.3847763, 0, 0, 1, 237 73
+           L 250 60 Z" fill="black" />
+        <animateMotion path="M 0 0 L -20 0 Z" dur="2s" fill="freeze" repeatCount="indefinite" />
+        </g>
+            <g transform="translate(-20,0)">
+    <line x1="185" y1="100" x2="250" y2="100" style="stroke:rgb(0,0,0);stroke-width:3" />
+            <path d="M 193 113
+           A 18.3847763 18.3847763, 0, 0, 1, 193 87
+           L 180 100 Z" fill="black" />
+            <animateMotion path="M 0 0 L 20 0 Z" dur="2s" fill="freeze" repeatCount="indefinite" />
+            </g>
+        <text x="165" y="50" fill="black">responses</text>
+        <text x="195" y="118" fill="black">requests</text>
+            </svg>
+        </div>
+        <ul>
+          <li>Clients are the typical web user's internet-connected devices (for example, your computer connected to your Wi-Fi, or your phone connected to your mobile network) and web-accessing software available on those devices (usually a web browser like
+            Firefox or Chrome).</li>
+          <li>Servers are computers that store webpages, sites, or apps. When a client device wants to access a webpage, a copy of the webpage is downloaded from the server onto the client machine to be displayed in the user's web browser.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="What_is_involved">
+      <h1>What is involved?</h1>
+      <article>
+        <p>
+          The client and server we've described above don't tell the whole story. There are many other parts involved, and we'll describe them below.
+        </p>
+        <p>
+          For now, let's imagine that the web is a road. On one end of the road is the client, which is like your house. On the other end of the road is the server, which is a shop you want to buy something from.
+        </p>
+        <p>
+          In addition to the client and the server, we also need to say hello to:
+        </p>
+        <ul>
+          <li><strong>Your internet connection</strong>: Allows you to send and receive data on the web. It's basically like the street between your house and the shop.</li>
+          <li><strong>TCP/IP</strong>: Transmission Control Protocol and Internet Protocol are communication protocols that define how data should travel across the web. This is like the transport mechanisms that let you place an order, go to the shop, and
+            buy your goods. In our example, this is like a car or a bike (or however else you might get around).</li>
+          <li><strong>DNS</strong>: Domain Name Servers are like an address book for websites. When you type a web address in your browser, the browser looks at the DNS to find the website's real address before it can retrieve the website. The browser needs
+            to find out which server the website lives on, so it can send HTTP messages to the right place (see below). This is like looking up the address of the shop so you can access it.</li>
+          <li><strong>HTTP</strong>: Hypertext Transfer Protocol is an application protocol that defines a language for clients and servers to speak to each other. This is like the language you use to order your goods.</li>
+          <li><strong>Component files</strong>: A website is made up of many different files, which are like the different parts of the goods you buy from the shop. These files come in two main types:</li>
+          <ul>
+            <li><strong>Code files</strong>: Websites are built primarily from HTML, CSS, and JavaScript, but not exclusively.</li>
+            <li><strong>Assets</strong>: This is a collective name for all the other stuff that makes up a website, such as images, music, video, Word documents, and PDFs</li>
+          </ul>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="Whole_process">
+      <h1>The whole process</h1>
+      <article>
+        <p>
+          When you type a web address into your browser (for our analogy that's like walking to the shop):
+        </p>
+        <ol>
+          <li>The browser goes to the DNS server, and finds the real address of the server that the website lives on (you find the address of the shop).</li>
+          <li>The browser sends an HTTP request message to the server, asking it to send a copy of the website to the client (you go to the shop and order your goods). This message, and all other data sent between the client and the server, is sent across
+            your internet connection using TCP/IP.</li>
+          <li>If the server approves the client's request, the server sends the client a "200 OK" message, which means "Of course you can look at that website! Here it is", and then starts sending the website's files to the browser as a series of small chunks
+            called data packets (the shop gives you your goods, and you bring them back to your house).</li>
+          <li>The browser assembles the small chunks into a complete website and displays it to you (the goods arrive at your door, awesome!).</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="main-section" id="Dns_explained">
+      <h1>DNS explained</h1>
+      <article>
+        <p>
+          Domain Name Servers are special servers that match up a web address you type into your browser (like "google.com") to the website's real (IP) address (see example below).
+          <figure>
+            <img src="https://mdn.mozillademos.org/files/8405/dns-ip.png" alt="relationship between domain name and IP adress">
+          </figure>
+        </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Packets_explained">
+      <h1>Packets explained</h1>
+      <article>
+        <p>
+          The term "packets" was used earlier to describe the format in which the data is sent from server to client. What does it mean? Basically, when data is sent across the web, it is sent as thousands of small chunks, so that many different web users can download
+          the same website at the same time. If websites were sent as single big chunks, only one user could download one at a time, which obviously would make the web very inefficient and not much fun to use.
+        </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Reference">
+      <h1>Reference</h1>
+      <article>
+        <ul>
+          <li>
+            All the technical information in this page is taken from
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank">MDN</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+<!-- partial -->
+  
+</body>
+</html>
